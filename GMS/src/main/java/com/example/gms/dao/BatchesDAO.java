@@ -10,43 +10,9 @@ public class BatchesDAO implements DAO<Batch> {
 	
 	DB db = DB.getDB();	
 	private String TAG = "[" + getClass().getSimpleName() + "] ";
-	
-	int bid_default;
-	
+
 	public BatchesDAO() {
-		createDefaultIfMissing();
-	}
-	
-	public int getDefaultBID() {
-		return bid_default;		
-	}
-	
-	public void createDefaultIfMissing() {
 		
-		try {
-			
-			ArrayList<Batch> batches = findByName("DefaultBatch");
-
-			if(batches.size() > 0) {
-				
-				bid_default = batches.get(0).getBid();
-
-			} else {
-				
-				System.out.println("Default batch is missing in the DB. Creating default batch...");
-				Batch batch = new Batch("DefaultBatch", "Participants are added to this batch by default");
-				int result = create(batch);
-				String message = (result > 0) ? "Default batch created." : "Error while creating default batch.";
-				System.out.println(TAG + message);
-				// find something smarter to do if default batch creation fails...
-				batches = findByName("DefaultBatch");
-				bid_default = batches.get(0).getBid();								
-				
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 	@Override
@@ -129,7 +95,6 @@ public class BatchesDAO implements DAO<Batch> {
 		
 	}
 
-		
 	@Override
 	public ArrayList<Batch> getAll() {
 		

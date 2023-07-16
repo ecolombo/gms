@@ -19,15 +19,13 @@ public class ParticipantsDAO implements DAO<Participant> {
 		
 		try {
 			
-			int default_bid =(new BatchesDAO()).getDefaultBID();
-			
 			String sql = "INSERT INTO participants VALUES("
 					+ "null, "
 					+ "'" + participant.getName() + "', "
 					+ "'" + participant.getPhone() + "', "
 					+ "'" + participant.getEmail() + "', "
 					+ "'" + participant.getBirthDate() + "', "
-					+ Integer.toString(default_bid) + ")";
+					+ "NULL" + ")";
 			
 			System.out.println(TAG + "SQL: " + sql);
 							
