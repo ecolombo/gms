@@ -1,16 +1,19 @@
-package com.example.gms.db;
+package com.example.gms.dao;
 
 import java.util.ArrayList;
 
 import com.example.gms.model.Batch;
 import com.example.gms.model.Participant;
 
-public interface DAO {	
+public interface DAO<T> {	
 	
-	// Ab hier reinkopiert, anpassen:
-	void createConnection();
-	void closeConnection();
+	int create(T object);
+	int update(T object);
+	int delete(int id);
+	ArrayList<T> getAll();
+	ArrayList<T> findByName(String name);
 	
+	/*
 	int createParticipant(Participant participant);	
 	//todo: alle zu int konvertieren?
 	void updateParticipant(Participant participant);
@@ -22,6 +25,6 @@ public interface DAO {
 	void deleteBatch(int bid);
 	ArrayList<Batch> findBatchesByName(String name);
 	ArrayList<Batch> getAllBatches();
-	
+	*/
 
 }

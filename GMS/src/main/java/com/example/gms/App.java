@@ -40,21 +40,9 @@ public class App {
 		System.out.println("Connecting to DB...");
 		
 		DB db = new DB();
-		db.createConnection();
-		
-		// Create default batch if not yet created
-		if(db.findBatchesByName("DefaultBatch").size() == 0) {
-			System.out.println("Creating default batch...");
-			Batch batch = new Batch("DefaultBatch", "Participants are added to this batch by default");
-			db.createBatch(batch);
-		}
+		db.initialize();
 
-		
-		
-		
-		
-		
-		db.closeConnection();
+		db.close();
 
 	}
 

@@ -3,6 +3,7 @@ package com.example.gms.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import com.example.gms.dao.ParticipantsDAO;
 import com.example.gms.db.DB;
 import com.example.gms.model.Participant;
 
@@ -29,16 +30,20 @@ public class ParticipantController extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	
 		String action = request.getParameter("callAction");
 			
-		if (action.equals("addParticipants")) {
+		if (action.equals("addParticipant")) {
+
 			addParticipant(request, response);
+		
 		} else {
-			String url = "404.html";
-			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-			dispatcher.forward(request, response);			
+			// String url = "404.html";
+			// RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+			// dispatcher.forward(request, response);
+			System.out.println("[ParticipantController]: POST action not recognized");
 		}
+		
 		
 	}
 	
@@ -54,10 +59,13 @@ public class ParticipantController extends HttpServlet {
 			
 			System.out.println("[ParticipantController Servlet] Participant data: " + participant);
 			
-			DB db = new DB();
+			/* DB db = new DB();
 			db.createConnection();
 			int result = db.createParticipant(participant);
-			db.closeConnection();
+			db.closeConnection();*/
+						
+			ParticipantsDAO participantsDAO = new ParticipantsDAO();
+			int result = participantsDAO.create(participant);
 			
 			response.setContentType("text/html");
 			PrintWriter out = response.getWriter();
@@ -74,7 +82,7 @@ public class ParticipantController extends HttpServlet {
 			
 			
 			// participant.Ganzzahl = Integer.parseInt(request.getParameter(""));
-			out.println("</body>\r\n</html>");
+			out.println("</body>\r\n</html>");			
 		
 		} catch (Exception e) {
 			e.printStackTrace();
