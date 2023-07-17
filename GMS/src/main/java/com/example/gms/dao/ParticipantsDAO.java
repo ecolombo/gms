@@ -1,6 +1,7 @@
 package com.example.gms.dao;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.example.gms.db.DB;
@@ -117,13 +118,9 @@ public class ParticipantsDAO implements DAO<Participant> {
 			ResultSet set = db.executeQuery(sql);
 			
 			if (set.next()) {
-				participant = new Participant();
-				participant.setPid(set.getInt("pid"));  // Either Column number or Column label
-				participant.setName(set.getString("name"));
-				participant.setPhone(set.getString("phone"));
-				participant.setEmail(set.getString("email"));
-				participant.setBirthDate(set.getString("birthDate"));
-				participant.setBid(set.getInt("bid"));
+				
+				participant = participantFromSet(set);
+				
 			} else {
 				System.out.println(TAG + " couldn't find that participant");
 			}
@@ -135,8 +132,7 @@ public class ParticipantsDAO implements DAO<Participant> {
 		return participant;
 
 	}
-
-
+	
 	@Override
 	public ArrayList<Participant> getAll() {
 		
@@ -148,14 +144,9 @@ public class ParticipantsDAO implements DAO<Participant> {
 			
 			ResultSet set = db.executeQuery(sql);
 			while(set.next()) {
-				Participant participant = new Participant();
-				participant.setPid(set.getInt("pid"));  // Either Column number or Column label
-				participant.setName(set.getString("name"));
-				participant.setPhone(set.getString("phone"));
-				participant.setEmail(set.getString("email"));
-				participant.setBirthDate(set.getString("birthDate"));
-				participant.setBid(set.getInt("bid"));			
-				participants.add(participant);
+						
+				participants.add(participantFromSet(set));
+				
 			}
 			
 		} catch (Exception e) {
@@ -163,7 +154,31 @@ public class ParticipantsDAO implements DAO<Participant> {
 		}
 		
 
-		return participants;	}
+		return participants;	
+	}
+	
+	public ArrayList<Participant> getAllWhereBidEquals(int bid) {
+		
+		ArrayList<Participant> participants = new ArrayList<Participant>();
+		
+		try {
+			
+			String sql = "SELECT * FROM participants WHERE bid="+Integer.toString(bid);
+			
+			ResultSet set = db.executeQuery(sql);
+			while(set.next()) {
+		
+				participants.add(participantFromSet(set));
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+
+		return participants;	
+	}
 
 	@Override
 	public ArrayList<Participant> findByName(String name) {
@@ -176,14 +191,9 @@ public class ParticipantsDAO implements DAO<Participant> {
 			
 			ResultSet set = db.executeQuery(sql);
 			while(set.next()) {
-				Participant participant = new Participant();
-				participant.setPid(set.getInt("cid"));  // Either Column number or Column label
-				participant.setName(set.getString("name"));
-				participant.setPhone(set.getString("phone"));
-				participant.setEmail(set.getString("email"));
-				participant.setBirthDate(set.getString("birthDate"));
-				participant.setBid(set.getInt("bid"));			
-				participants.add(participant);	
+				
+				participants.add(participantFromSet(set));
+				
 			}
 			
 		} catch (Exception e) {
@@ -193,6 +203,20 @@ public class ParticipantsDAO implements DAO<Participant> {
 		return participants;
 	
 	}
+	
+	
+	private Participant participantFromSet(ResultSet set) throws SQLException {
+		
+		Participant participant = new Participant();
+		participant.setPid(set.getInt("pid"));  // Either Column number or Column label
+		participant.setName(set.getString("name"));
+		participant.setPhone(set.getString("phone"));
+		participant.setEmail(set.getString("email"));
+		participant.setBirthDate(set.getString("birthDate"));
+		participant.setBid(set.getInt("bid"));
+		return participant;
+		
+	}	
 
 }
 

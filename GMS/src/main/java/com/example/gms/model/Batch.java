@@ -11,7 +11,14 @@ USE gms;
 CREATE TABLE batches (
 	bid INT PRIMARY KEY AUTO_INCREMENT,
 	name VARCHAR(256),
-	description VARCHAR(1024)
+	description VARCHAR(1024) 
+);
+
+Nicht so toll, weil user wissen muss ob es den Batchnamen schon gibt.
+CREATE TABLE batches (
+	bid INT UNIQUE AUTO_INCREMENT,
+	name VARCHAR(256) PRIMARY KEY,
+	description VARCHAR(1024) 
 );
 
 */

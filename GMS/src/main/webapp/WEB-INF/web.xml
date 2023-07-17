@@ -16,10 +16,20 @@
   	<description></description>
   	<servlet-class>com.example.gms.controller.FrontController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>BatchController</servlet-name>
+  	<display-name>BatchController</display-name>
+  	<description></description>
+  	<servlet-class>com.example.gms.controller.BatchController</servlet-class>
+  </servlet>
   
   <servlet-mapping>
   	<servlet-name>ParticipantController</servlet-name>
   	<url-pattern>/ParticipantController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>BatchController</servlet-name>
+  	<url-pattern>/BatchController</url-pattern>
   </servlet-mapping>
 
 

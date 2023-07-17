@@ -53,7 +53,7 @@ public class BatchesDAO implements DAO<Batch> {
 			
 			String sql = "UPDATE batches SET "
 					+ "name = '" + batch.getName() + "', "
-					+ "description = '" + batch.getDescription() + "', "
+					+ "description = '" + batch.getDescription() + "' "
 					+ "WHERE bid = " + batch.getBid() + ";";
 					
 			System.out.println(TAG + "SQL: "+sql);

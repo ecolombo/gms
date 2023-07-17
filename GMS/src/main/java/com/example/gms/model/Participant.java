@@ -14,6 +14,18 @@ package com.example.gms.model;
 	);
 	
 	
+	Variante, dropped wegen User muss batchnamen kennen
+	CREATE TABLE participants (
+		pid INT PRIMARY KEY AUTO_INCREMENT,
+		name VARCHAR(256),
+		phone VARCHAR(20),
+		email VARCHAR(256),
+		birthDate DATE,
+		batchName VARCHAR(256),
+		CONSTRAINT fk_batchname FOREIGN KEY batchName
+		REFERENCES batches(name)
+	);	
+	
 	// todo: BirthDate DATE bearbeiten!!
  
  */
