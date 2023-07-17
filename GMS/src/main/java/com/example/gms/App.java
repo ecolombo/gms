@@ -1,4 +1,10 @@
 /*
+ * todo:
+ * BatchEditors entwickeln
+ * Dropdown auswerten in editPAricipant und doAddParticipant
+ * Auch Bei Add Participant, Dropdown um Batch auszuwählen.
+ *  
+ * 
  * todo: return result bei allen Funktionen von DB?
  * Weiter mit Demo 4.4
  * 

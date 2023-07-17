@@ -89,7 +89,7 @@ public class Participant {
 		this.birthDate = birthDate;
 	}
 
-	public int getBid() {
+	public int getBid() {		
 		return bid;
 	}
 

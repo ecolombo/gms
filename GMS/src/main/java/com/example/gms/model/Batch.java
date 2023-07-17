@@ -16,6 +16,8 @@ CREATE TABLE batches (
 
 */
 
+// todo: Add some time
+
 
 public class Batch {
 	

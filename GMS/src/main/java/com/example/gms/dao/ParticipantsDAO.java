@@ -42,12 +42,6 @@ public class ParticipantsDAO implements DAO<Participant> {
 	}
 	
 	
-
-	public void updateParticipant(Participant participant) {
-	
-		
-	}	
-
 	
 	@Override
 	public int update(Participant participant) {
@@ -56,12 +50,14 @@ public class ParticipantsDAO implements DAO<Participant> {
 		
 		try {
 			
-			String sql = "UPDATE participants SET"
+			String bidString = (participant.getBid() == 0) ? null : Integer.toString(participant.getBid()); 
+			
+			String sql = "UPDATE participants SET "
 					+ "name = '" + participant.getName() + "', "
 					+ "phone = '" + participant.getPhone() + "', "
 					+ "email = '" + participant.getEmail() + "', "
 					+ "birthDate = '" + participant.getBirthDate() + "', "
-					+ "bid = " + participant.getBid() + ", "
+					+ "bid = " + bidString + " "
 					+ "WHERE pid = " + participant.getPid() + ";";
 					
 			System.out.println(TAG + "SQL: "+sql);
@@ -110,6 +106,35 @@ public class ParticipantsDAO implements DAO<Participant> {
 	}
 
 
+	@Override
+	public Participant get(int pid) {
+		
+		Participant participant = null;
+		
+		try {
+			
+			String sql = "SELECT * FROM participants WHERE pid=" + Integer.toString(pid);		
+			ResultSet set = db.executeQuery(sql);
+			
+			if (set.next()) {
+				participant = new Participant();
+				participant.setPid(set.getInt("pid"));  // Either Column number or Column label
+				participant.setName(set.getString("name"));
+				participant.setPhone(set.getString("phone"));
+				participant.setEmail(set.getString("email"));
+				participant.setBirthDate(set.getString("birthDate"));
+				participant.setBid(set.getInt("bid"));
+			} else {
+				System.out.println(TAG + " couldn't find that participant");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return participant;
+
+	}
 
 
 	@Override
@@ -124,7 +149,7 @@ public class ParticipantsDAO implements DAO<Participant> {
 			ResultSet set = db.executeQuery(sql);
 			while(set.next()) {
 				Participant participant = new Participant();
-				participant.setPid(set.getInt("cid"));  // Either Column number or Column label
+				participant.setPid(set.getInt("pid"));  // Either Column number or Column label
 				participant.setName(set.getString("name"));
 				participant.setPhone(set.getString("phone"));
 				participant.setEmail(set.getString("email"));

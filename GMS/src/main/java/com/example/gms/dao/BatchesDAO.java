@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.example.gms.db.DB;
 import com.example.gms.model.Batch;
+import com.example.gms.model.Participant;
 
 public class BatchesDAO implements DAO<Batch> {
 	
@@ -50,7 +51,7 @@ public class BatchesDAO implements DAO<Batch> {
 		
 		try {
 			
-			String sql = "UPDATE batches SET"
+			String sql = "UPDATE batches SET "
 					+ "name = '" + batch.getName() + "', "
 					+ "description = '" + batch.getDescription() + "', "
 					+ "WHERE bid = " + batch.getBid() + ";";
@@ -69,6 +70,33 @@ public class BatchesDAO implements DAO<Batch> {
 		
 		return result;
 		
+	}
+	
+	@Override
+	public Batch get(int bid) {
+		
+		Batch batch = null;
+		
+		try {
+			
+			String sql = "SELECT * FROM batches WHERE bid=" + Integer.toString(bid);		
+			ResultSet set = db.executeQuery(sql);
+			
+			if (set.next()) {
+				batch = new Batch();
+				batch.setBid(set.getInt("bid"));  
+				batch.setName(set.getString("name"));
+				batch.setDescription(set.getString("description"));
+			} else {
+				System.out.println(TAG + " couldn't find that participant");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return batch;
+
 	}
 	
 
@@ -145,7 +173,8 @@ public class BatchesDAO implements DAO<Batch> {
 
 		return batches;
 		
-	}	
+	}
+
 	
 
 }
