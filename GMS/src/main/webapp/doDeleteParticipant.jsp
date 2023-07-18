@@ -16,6 +16,9 @@
 </head>
 
 <body>	
+<ul class="nav">
+<li class="nav"><a href="manageParticipants.jsp">Back to participant manager</a></li>
+</ul>
    
 <H3>    
 <%	
@@ -40,8 +43,6 @@
 	}	
 %>
 </H3>
-
-<a href="manageParticipants.jsp">Back to participant manager</a>
 
 </body>
 </html>

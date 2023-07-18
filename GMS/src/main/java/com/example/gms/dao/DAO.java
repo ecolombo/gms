@@ -14,18 +14,4 @@ public interface DAO<T> {
 	ArrayList<T> getAll();
 	ArrayList<T> findByName(String name);
 	
-	/*
-	int createParticipant(Participant participant);	
-	//todo: alle zu int konvertieren?
-	void updateParticipant(Participant participant);
-	void deleteParticipant(int pid);
-	ArrayList<Participant> getAllParticipants();
-	
-	void createBatch(Batch batch);
-	void updateBatch(Batch batch);
-	void deleteBatch(int bid);
-	ArrayList<Batch> findBatchesByName(String name);
-	ArrayList<Batch> getAllBatches();
-	*/
-
 }

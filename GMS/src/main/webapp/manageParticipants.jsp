@@ -16,7 +16,9 @@
 <link rel="stylesheet" href="gms.css">
 </head>
 <body>
-<a href='index.jsp'>Back to home</a>
+<ul class="nav">
+<li class="nav"><a href="index.jsp">Back to home</a></li>
+</ul>
 <% 
 	try {
 		ParticipantsDAO participantsDAO = new ParticipantsDAO();
@@ -41,8 +43,8 @@
 						+ "<td>"+participant.getBirthDate()+"</td>"
 						+ "<td>"+batchName+"</td>"
 						+ "<td>"
-						+"<a href='editParticipant.jsp?pid="+participant.getPid()+"'>Edit</a>&nbsp;-&nbsp;"
-						+"<a href='doDeleteParticipant.jsp?pid="+participant.getPid()+"'>Delete</a>"
+						+"<ul class='actions'><li class='actions'><a href='editParticipant.jsp?pid="+participant.getPid()+"'>Edit</a></li> "
+						+"<li class='actions'><a href='doDeleteParticipant.jsp?pid="+participant.getPid()+"'>Delete</a></li></ul>"
 						+"</td></tr>");
 		}
 		out.println("</table>");	
@@ -52,7 +54,9 @@
 
 %>
 
-<a href='addParticipant.jsp'>Add participant</a>
+	<form action="addParticipant.jsp" method="post">
+		<p><input type="submit" value="Add a participant"/></p>			
+	</form>
 
 </body>
 </html>

@@ -16,6 +16,9 @@
 </head>
 
 <body>	
+<ul class="nav">
+<li class="nav"><a href="manageParticipants.jsp">Back to participant manager</a></li>
+</ul>
    
 <H3>    
 <%	
@@ -26,6 +29,12 @@
 		participant.setEmail(request.getParameter("txtEmail"));
 		participant.setPhone(request.getParameter("txtPhone"));
 		participant.setBirthDate(request.getParameter("dateBirthday"));
+				
+		String bidString =  request.getParameter("selBatch");
+		if (Integer.valueOf(bidString) != 0) {
+			participant.setBid(Integer.valueOf(bidString));
+		}		
+		
 					
 		ParticipantsDAO participantsDAO = new ParticipantsDAO();
 		int result = participantsDAO.create(participant);
@@ -43,8 +52,6 @@
 	}
 %>
 </H3>
-
-<a href="manageParticipants.jsp">Back to participant manager</a>
 
 </body>
 </html>

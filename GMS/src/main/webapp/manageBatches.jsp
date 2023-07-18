@@ -16,7 +16,10 @@
 <link rel="stylesheet" href="gms.css">
 </head>
 <body>
-<a href='index.jsp'>Back to home</a>
+<ul class="nav">
+<li class="nav"><a href="index.jsp">Back to home</a></li>
+</ul>
+
 <% 
 
 	try {
@@ -29,10 +32,10 @@
 			
 			out.println("<tr><td>"+batch.getName()+"</td>"
 						+ "<td>"+batch.getDescription()+"</td>"
-						+ "<td>"
-						+"<a href='editBatch.jsp?bid="+batch.getBid()+"'>Edit</a>&nbsp;-&nbsp;"
-						+"<a href='doDeleteBatch.jsp?bid="+batch.getBid()+"'>Delete</a>"
-						+"</td></tr>");
+						+ "<td><ul class='actions'>"
+						+"<li class='actions'><a href='editBatch.jsp?bid="+batch.getBid()+"'>Edit</a></li>"
+						+"<li class='actions'><a href='doDeleteBatch.jsp?bid="+batch.getBid()+"'>Delete</a></li>"
+						+"</ul></td></tr>");
 		}
 		out.println("</table>");
 		
@@ -41,7 +44,9 @@
 	}
 %>
 
-<a href='addBatch.jsp'>Define a new batch</a>
+	<form action="addBatch.jsp" method="post">
+		<p><input type="submit" value="Define a new batch"/></p>			
+	</form>
 
 </body>
 </html>

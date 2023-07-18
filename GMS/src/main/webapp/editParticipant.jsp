@@ -17,6 +17,9 @@
 <link rel="stylesheet" href="gms.css">
 </head>
 <body>
+<ul class="nav">
+<li class="nav"><a href="manageParticipants.jsp">Back to participant manager</a></li>
+</ul>
 
 <%
 	int pid = Integer.valueOf(request.getParameter("pid"));
@@ -64,7 +67,7 @@
 			</select>
 			</p>						
 			<p>
-				<input type="submit" value="UPDATE"/>
+				<input type="submit" value="Save"/>
 			</p>
 			
 
@@ -73,8 +76,6 @@
 			<input type="hidden" name="bid" value="<%= participant.getBid() %>"/>
 			
 			</form>
-			
-			<a href="manageParticipants.jsp">Return to participant manager</a>
 
 </body>
 </html>

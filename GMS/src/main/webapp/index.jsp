@@ -11,11 +11,12 @@
 </head>
 <body>
 
-<h2>Welcome to GymOrganizer</h2>
-<ul>
-<li><a href="manageParticipants.jsp">Manage participants</a></li>
-<li><a href="manageBatches.jsp">Manage batches</a></li>
+<ul class="nav">
+<li class="nav"><a href="manageParticipants.jsp">Manage participants</a></li>
+<li class="nav"><a href="manageBatches.jsp">Manage batches</a></li>
 </ul>
+
+<p><br><br><br><h2>Welcome to GymOrganizer</h2></p>
 
 
 <!--	

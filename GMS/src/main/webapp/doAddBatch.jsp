@@ -16,6 +16,10 @@
 </head>
 
 <body>	
+<ul class="nav">
+<li class="nav"><a href="manageBatches.jsp">Back to batches manager</a></li>
+</ul>
+
    
 <H3>    
 <%	
@@ -41,8 +45,5 @@
 	}
 %>
 </H3>
-
-<a href="manageBatches.jsp">Return to batches manager</a>
-
 </body>
 </html>

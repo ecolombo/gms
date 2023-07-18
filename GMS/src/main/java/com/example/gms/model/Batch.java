@@ -1,11 +1,7 @@
 package com.example.gms.model;
 
-
 /*
  
- "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p
-→ Passwort: MySQL123.456
-
 CREATE DATABASE gms;
 USE gms;
 CREATE TABLE batches (
@@ -14,17 +10,7 @@ CREATE TABLE batches (
 	description VARCHAR(1024) 
 );
 
-Nicht so toll, weil user wissen muss ob es den Batchnamen schon gibt.
-CREATE TABLE batches (
-	bid INT UNIQUE AUTO_INCREMENT,
-	name VARCHAR(256) PRIMARY KEY,
-	description VARCHAR(1024) 
-);
-
 */
-
-// todo: Add some time
-
 
 public class Batch {
 	

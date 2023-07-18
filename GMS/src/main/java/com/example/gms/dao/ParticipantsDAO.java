@@ -20,13 +20,18 @@ public class ParticipantsDAO implements DAO<Participant> {
 		
 		try {
 			
+			String bidString = "NULL";
+			if (participant.getBid() != 0) {
+				bidString = "'"+Integer.toString(participant.getBid())+"'"; 
+			}
+			
 			String sql = "INSERT INTO participants VALUES("
-					+ "null, "
+					+ "NULL, "
 					+ "'" + participant.getName() + "', "
 					+ "'" + participant.getPhone() + "', "
 					+ "'" + participant.getEmail() + "', "
 					+ "'" + participant.getBirthDate() + "', "
-					+ "NULL" + ")";
+					+ bidString + ")";
 			
 			System.out.println(TAG + "SQL: " + sql);
 							

@@ -18,6 +18,10 @@
 </head>
 
 <body>	
+<ul class="nav">
+<li class="nav"><a href="manageBatches.jsp">Back to batches manager</a></li>
+</ul>
+
    
 <%	
 	try {	
@@ -61,8 +65,6 @@
 		e.printStackTrace();
 	}	
 %>
-
-<a href="manageBatches.jsp">Return to batches manager</a>
 
 </body>
 </html>

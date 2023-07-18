@@ -17,6 +17,9 @@
 <link rel="stylesheet" href="gms.css">
 </head>
 <body>
+<ul class="nav">
+<li class="nav"><a href="manageBatches.jsp">Back to batches manager</a></li>
+</ul>
 
 <%
    
@@ -40,12 +43,10 @@
 				<input type="text" name="txtDescription" value="<%= batch.getDescription() %>"/>
 			</p>
 			<p>
-				<input type="submit" value="UPDATE"/>
+				<input type="submit" value="Save"/>
 			</p>
 			<input type="hidden" name="bid" value="<%= batch.getBid() %>"/>						
 		</form>
-			
-		<a href="manageBatches.jsp">Return to batches manager</a>
 
 </body>
 </html>

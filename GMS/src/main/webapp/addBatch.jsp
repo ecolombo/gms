@@ -8,6 +8,10 @@
 <link rel="stylesheet" href="gms.css">
 </head>
 <body>
+<ul class="nav">
+<li class="nav"><a href="manageBatches.jsp">Back to batches manager</a></li>
+</ul>
+
 		<h3>Define a new batch</h3>
 		
 		<form action="doAddBatch.jsp" method="post">
@@ -20,11 +24,11 @@
 				<input type="text" name="txtDescription" placeholder="6:00 am Yoga session"/>
 			</p>
 			<p>
-				<input type="submit" value="ADD NEW BATCH"/>
+				<input type="submit" value="Add"/>
 			</p>			
 		</form>
 		
-		<a href="manageBatches.jsp">Return to batches manager</a>
+		
 
 </body>
 </html>
